@@ -18,7 +18,7 @@ public:
             temp=temp->next;
         }
         int s=v.size();
-        for(int i=0;i+k<=s;i+=k){
+        for(int i=0;i<=s-k;i+=k){
             reverse(v.begin()+i,v.begin()+i+k);
         }
 temp=head;
