@@ -1,0 +1,16 @@
+class Solution {
+public:
+    string finalString(string s) {
+      string str;
+      for(int i=0;i<s.size();i++){
+        if(s[i]=='i'){
+            reverse(str.begin(),str.end());
+
+        }
+        else{
+            str.push_back(s[i]);
+        }
+      }  
+      return str;
+    }
+};
