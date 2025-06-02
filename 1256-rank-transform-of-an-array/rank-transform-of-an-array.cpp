@@ -11,11 +11,10 @@ for(auto it:copy){
         
     }
 }
-vector<int>res;
-for(auto it:arr){
-    res.push_back(mpp[it]);
+for(int i=0;i<arr.size();i++){
+    arr[i]=mpp[arr[i]];
 }
-return res;
+return arr;
     }
 
 };
