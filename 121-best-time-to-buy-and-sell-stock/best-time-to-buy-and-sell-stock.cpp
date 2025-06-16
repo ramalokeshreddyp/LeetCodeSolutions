@@ -10,7 +10,7 @@ public:
         xmin=nums[i];
     }
     else{
-        result=max(result,abs(nums[i]-xmin));
+        result=max(result,nums[i]-xmin);
     }
    }
     return result;   
