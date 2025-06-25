@@ -1,19 +1,22 @@
 class Solution {
 public:
     int distributeCandies(vector<int>& candyType) {
-        int n=candyType.size()/2;
-        unordered_map<int,int>mpp;
-        int cnt=0;
-        for(auto it:candyType){
-            if(mpp.find(it)!=mpp.end()){
-                continue;
+        unordered_set<int> unique(candyType.begin(), candyType.end());
+        int uniqueTypes = unique.size();
+        int n = candyType.size();
+        int low = 0, high = n / 2;
+        int ans = 0;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (mid <= uniqueTypes) {
+                ans = mid;     
+                low = mid + 1;
+            } else {
+                high = mid - 1; 
             }
-            mpp[it]=1;
-            cnt++;
         }
-        if(cnt<=n){
-            return cnt;
-        }
-        return n;
+
+        return ans;
     }
 };
