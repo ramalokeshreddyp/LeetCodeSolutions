@@ -1,17 +1,15 @@
 class Solution {
 public:
     int findFinalValue(vector<int>& nums, int original) {
-       priority_queue<int,vector<int>,greater<int>>pq;
-       
-for (int num : nums) {
-pq.push(num);
-}
-while(!pq.empty()){
-    if(pq.top()==original){
-        original*=2;
-    }
-    pq.pop();
-}
-return original;
+       bool b = true;
+        while(b){
+            int i = 0;
+            for(i = 0; i<nums.size(); i++){
+                if(nums[i] == original){ original *= 2; break;}
+            }
+            if(i == nums.size())
+            b = false;
+        }
+        return original;
     }
 };
