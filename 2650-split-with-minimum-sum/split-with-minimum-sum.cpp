@@ -1,17 +1,26 @@
 class Solution {
 public:
     int splitNum(int num) {
-        string str=to_string(num);
-        int num1=0,num2=0;
-        sort(str.begin(),str.end());
-        for(int i=0;i<str.size();i++){
-            if(i%2==0){
-            num1=num1*10+(str[i]-'0');
-            }
-            else{
-                num2=num2*10+(str[i]-'0');
+        vector<int> count(10, 0);
+        while (num > 0) {
+            count[num % 10]++;
+            num /= 10;
+        }
+
+        int num1 = 0, num2 = 0;
+        bool turn = true;
+
+        for (int digit = 0; digit <= 9; ++digit) {
+            while (count[digit] > 0) {
+                if (turn)
+                    num1 = num1 * 10 + digit;
+                else
+                    num2 = num2 * 10 + digit;
+                count[digit]--;
+                turn = !turn;
             }
         }
-        return num1+num2;
+
+        return num1 + num2;
     }
 };
