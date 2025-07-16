@@ -1,20 +1,18 @@
 class Solution {
 public:
     vector<int> distinctDifferenceArray(vector<int>& nums) {
-int n=nums.size();
-vector<int>res;
-
-unordered_set<int>us;
-int cnt=0;
-for(auto it=nums.begin();it!=nums.end();it++){
-    set<int>s(it+1,nums.end());
-if(us.find(*it)==us.end()){
-    us.insert(*it);
-    cnt++;
-}
-res.push_back(us.size()-s.size());
-}
-return res;
+        unordered_map<int, int> prefix, suffix;
+        vector<int> result;
+        for (int& x: nums) {
+            suffix[x]++;
+        }
+        for (int& x: nums) {
+            prefix[x]++;
+            if (--suffix[x] == 0) {
+                suffix.erase(x);
+            }
+            result.push_back(prefix.size() - suffix.size());
+        }
+        return result;
     }
-
 };
