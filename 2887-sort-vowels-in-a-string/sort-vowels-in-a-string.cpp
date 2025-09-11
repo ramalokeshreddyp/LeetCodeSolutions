@@ -1,20 +1,27 @@
 class Solution {
 public:
-   string sortVowels(string s) {
-   multiset<char>st;
-   for(int i=0;i<s.size();i++){
-    if(s[i]=='A'||s[i]=='a'||s[i]=='I'||s[i]=='i'||s[i]=='O'||s[i]=='o'||s[i]=='U'||s[i]=='u'||s[i]=='E'||s[i]=='e'){
-      st.insert(s[i]);
-    }
-}
-auto it=st.begin();
- for(int i=0;i<s.size();i++){
-    if(s[i]=='A'||s[i]=='a'||s[i]=='I'||s[i]=='i'||s[i]=='O'||s[i]=='o'||s[i]=='U'||s[i]=='u'||s[i]=='E'||s[i]=='e'){
-    s[i]=*it;
-    it++;
-    }
-}
-return s;
-}
+    string sortVowels(string s) {
+        vector<char> vowels;
+        for (char c : s) {
+            if (isVowel(c)) {
+                vowels.push_back(c);
+            }
+        }
 
+        sort(vowels.begin(), vowels.end());
+
+        int v_index = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if (isVowel(s[i])) {
+                s[i] = vowels[v_index++];
+            }
+        }
+
+        return s;
+    }
+
+private:
+    bool isVowel(char c) {
+        return string("AEIOUaeiou").find(c) != string::npos;
+    }
 };
