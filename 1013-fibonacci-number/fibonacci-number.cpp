@@ -1,12 +1,8 @@
 class Solution {
 public:
-int f(int n){
-    if(n<=1){
-        return n;
-    }
-    return f(n-1)+f(n-2);
-}
     int fib(int n) {
-        return f(n);
+        double a=(1+sqrt(5))/2.0;
+        double b=(1-sqrt(5))/2.0;
+        return round((pow(a,n)-pow(b,n))/sqrt(5));
     }
 };
