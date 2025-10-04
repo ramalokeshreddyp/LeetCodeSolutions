@@ -1,22 +1,25 @@
 class Solution {
 public:
+bool f(string& s,int i,int n){
+    if(i>=n/2){
+        return true;
+    }
+    if(s[i]!=s[n-i-1]){
+        return false;
+    }
+   return  f(s,i+1,n);
+}
     bool isPalindrome(string s) {
-        string str="";
-        for(auto it:s)
+        string str;
+      for(auto it:s)
         {
             if(isalpha(it)){
-            str+=tolower(it);
+            str.push_back(tolower(it));
             }
             else if(isdigit(it)){
-                str+=it;
+             str.push_back(it);
             }
         }
-        int n=str.size();
-        for(int i=0;i<n/2;i++){
-            if(str[i]!=str[n-1-i]){
-                return false;
-            }
-        }
-        return true;
+        return f(str,0,str.size());
     }
 };
