@@ -8,12 +8,12 @@ public:
             z++;
         }
 if(z>k){
- while(z>k){
+
     if(nums[l]==0){
         z--;
     }
     l++;
- }
+ 
 }
 
 
