@@ -1,21 +1,19 @@
 class Solution {
 public:
-void printf(int ind,int n,vector<int>& arr,vector<vector<int>>& res,vector<int>& a){
-  
-    if(ind==n){
-        res.push_back(a);
-        return;
-    }
-    a.push_back(arr[ind]);
-    printf(ind+1,n,arr,res,a);
-    a.pop_back();
-    printf(ind+1,n,arr,res,a);
-}
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>>res;
-        vector<int>a;
+        vector<vector<int>>a;
         int n=nums.size();
-        printf(0,n,nums,res,a);
-        return res;
+        int subset=1<<n;
+        for(int num=0;num<subset;num++){
+            vector<int>res;
+            for(int i=0;i<n;i++){
+                if(num&(1<<i)){
+                    res.push_back(nums[i]);
+                }
+            }
+            a.push_back(res);
+        }
+        return a;
     }
+    
 };
