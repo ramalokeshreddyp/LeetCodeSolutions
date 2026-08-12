@@ -1,16 +1,20 @@
 class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
-    unordered_map<int, int> freq;
-    for (int num : nums) {
-        freq[num]++;
+        int n=nums.size();
+        unordered_map<int,int>mpp;
+        for(int i=0;i<n;i++){
+            mpp[nums[i]]++;
+        }
+        vector<int>res;
+        for(auto it:mpp){
+            if(it.second==1){
+                res.push_back(it.first);
+            }
+            if(res.size()==2){
+                break;
+            }
+        }
+        return res;
     }
-
-    auto it = stable_partition(nums.begin(), nums.end(), [&](int x) {
-        return freq[x] == 1;
-    });
-
-    return vector<int>(nums.begin(), it);
-}
-
 };
