@@ -2,19 +2,20 @@ class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
         int n=nums.size();
-        unordered_map<int,int>mpp;
-        for(int i=0;i<n;i++){
-            mpp[nums[i]]++;
+       long  xorr=0;
+       for(auto it:nums){
+        xorr^=it;
+       }
+       int rm=(xorr&(xorr-1))^xorr;
+       int b1=0,b2=0;
+       for(auto it:nums){
+        if(it&rm){
+            b1^=it;
         }
-        vector<int>res;
-        for(auto it:mpp){
-            if(it.second==1){
-                res.push_back(it.first);
-            }
-            if(res.size()==2){
-                break;
-            }
+        else{
+            b2^=it;
         }
-        return res;
+       }
+       return {b1,b2};
     }
 };
