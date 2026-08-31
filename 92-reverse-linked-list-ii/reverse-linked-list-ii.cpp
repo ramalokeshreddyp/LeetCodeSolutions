@@ -11,19 +11,21 @@
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-        vector<int>v;
-        ListNode *temp=head;
-        while(temp!=nullptr){
-            v.push_back(temp->val);
-            temp=temp->next;
-        }
-        reverse(v.begin()+(left-1),v.begin()+right);
-        int i=0;
-        temp=head;
-        while(temp!=nullptr){
-            temp->val=v[i++];
-            temp=temp->next;
-        }
-        return head;
+      ListNode* temp=head;
+      vector<int>v;
+      while(temp!=NULL){
+    v.push_back(temp->val);
+    temp=temp->next;
+      }
+      left--;
+
+      reverse(v.begin()+left,v.begin()+right);
+      temp=head;
+      int i=0;
+      while(temp!=NULL){
+        temp->val=v[i++];
+        temp=temp->next;
+      }
+      return head;
     }
 };
