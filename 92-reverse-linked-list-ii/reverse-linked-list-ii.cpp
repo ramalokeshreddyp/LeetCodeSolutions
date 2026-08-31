@@ -18,8 +18,14 @@ public:
     temp=temp->next;
       }
       left--;
+right--;
+while(left<right){
+    swap(v[left],v[right]);
+    left++;
+    right--;
+}
+      
 
-      reverse(v.begin()+left,v.begin()+right);
       temp=head;
       int i=0;
       while(temp!=NULL){
